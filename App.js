@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { 
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
 
-export default function App() {
+
+import Formulario from './components/Formulario';
+
+const App = () => {
+
+  const ocultarTeclado = () => {
+    Keyboard.dismiss();
+  };
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <TouchableWithoutFeedback onPress={()=>ocultarTeclado}>
+      <View style={styles.app}>
+        <View style={styles.contenido}>
+          <Formulario/>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  app:{
+    flex:1,
+    backgroundColor:'rgb(71,149,212)',
+    justifyContent:'center'
   },
+  contenido:{
+    marginHorizontal:'2.5%'
+  }
 });
+
+
+export default App;
